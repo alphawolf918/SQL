@@ -1,0 +1,3 @@
+CREATE VIEW accounts_calendar as SELECT accounts.id, calendar.name FROM accounts INNER JOIN calendar ON accounts.LOGON_USER = calendar.LOGON_USER
+
+CREATE VIEW giganet_user_accounts_logs AS SELECT user_logs.id AS "id", user_logs.about AS "about", user_logs.posted AS "posted", user_logs.pc_name AS "pc_name", accounts.employee_name AS "name", accounts.LOGON_USER AS "LOGON_USER", accounts.id AS "user_id" FROM user_logs JOIN accounts ON user_logs.userid = accounts.id
