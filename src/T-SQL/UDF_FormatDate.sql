@@ -1,0 +1,18 @@
+USE [InvoiceDM];
+GO
+
+IF OBJECT_ID (N'dbo.FormatDate', N'FN') IS NOT NULL  
+    DROP FUNCTION dbo.FormatDate;  
+GO
+
+CREATE FUNCTION dbo.FormatDate(@valIn AS DATE) RETURNS NVARCHAR(20)
+AS
+BEGIN
+	DECLARE @STR NVARCHAR(200);
+	SET @STR = UPPER(FORMAT(@valIn, 'dd-MMM-yy'))
+	RETURN @STR;
+END;
+
+GO
+
+SELECT dbo.FormatDate(GETDATE()) AS [Date];

@@ -1,0 +1,16 @@
+USE [InvoiceDM];
+GO
+
+IF OBJECT_ID (N'dbo.CreateInvoiceNr', N'FN') IS NOT NULL  
+    DROP FUNCTION dbo.CreateInvoiceNr;  
+GO
+
+CREATE FUNCTION dbo.CreateInvoiceNr(@valIn AS BIGINT) RETURNS NVARCHAR(180)
+AS
+BEGIN
+	DECLARE @INV_STR NVARCHAR(180);
+	SET @INV_STR = CONCAT('INV_000',  @valIn);
+	RETURN @INV_STR;
+END;
+GO
+SELECT dbo.CreateInvoiceNr(416783623) AS [Invoice Nr];
